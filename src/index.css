@@ -16,3 +16,38 @@
   font-family: lexbold;
   src: url('/fonts/lexend-bold.ttf');
 }
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background-color: #000000;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+.loader {
+  width: 100px;
+  height: 100px;
+  border: 10px solid #171717;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
