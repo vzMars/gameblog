@@ -3,7 +3,7 @@ import { useAuthContext } from './useAuthContext';
 import { UserType } from '../context/AuthContext';
 
 export const useLogin = () => {
-  const [error, setError] = useState<boolean | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean | null>(null);
   const { dispatch } = useAuthContext();
 
