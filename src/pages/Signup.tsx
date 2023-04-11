@@ -16,7 +16,7 @@ const Signup = () => {
 
   return (
     <main className='font-lexreg text-white'>
-      <section className='mx-auto max-w-6xl px-4 pb-12 pt-32 md:pt-40'>
+      <section className='mx-auto max-w-6xl px-4 pt-32 md:pt-40'>
         <form
           className='mx-auto flex max-w-sm flex-col rounded-md border border-neutral-800 bg-neutral-900 p-4 py-12'
           onSubmit={handleSubmit}
