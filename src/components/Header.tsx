@@ -4,10 +4,12 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import Hamburger from 'hamburger-react';
 import Nav from './Nav';
 import MobileNav from './MobileNav';
+import { useLogout } from '../hooks/useLogout';
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const { user } = useAuthContext().state;
+  const { logout } = useLogout();
 
   return (
     <header className='fixed top-0 w-full bg-neutral-900 font-lexbold text-white'>
@@ -22,9 +24,9 @@ const Header = () => {
         <div className='lg:hidden'>
           <Hamburger toggled={open} toggle={setOpen} rounded size={32} />
         </div>
-        <Nav user={user} />
+        <Nav user={user} logout={logout} />
       </section>
-      <MobileNav user={user} open={open} setOpen={setOpen} />
+      <MobileNav user={user} open={open} setOpen={setOpen} logout={logout} />
     </header>
   );
 };
