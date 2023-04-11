@@ -17,7 +17,7 @@ const Login = () => {
     <main className='font-lexreg text-white'>
       <section className='mx-auto max-w-6xl px-4 pb-12 pt-32 md:pt-40'>
         <form
-          className='mx-auto flex max-w-sm flex-col rounded-md bg-neutral-900 p-4 py-12'
+          className='mx-auto flex max-w-sm flex-col rounded-md border border-neutral-800 bg-neutral-900 p-4 py-12'
           onSubmit={handleSubmit}
         >
           <h1 className='mb-6 font-lexbold text-4xl'>Login</h1>
