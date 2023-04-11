@@ -3,9 +3,10 @@ import { UserType } from '../context/AuthContext';
 
 type PropsType = {
   user: UserType | null;
+  logout: () => Promise<void>;
 };
 
-const Nav = ({ user }: PropsType) => {
+const Nav = ({ user, logout }: PropsType) => {
   return (
     <nav className='hidden h-12 items-center space-x-6 text-lg lg:flex'>
       {user ? (
@@ -16,9 +17,12 @@ const Nav = ({ user }: PropsType) => {
           <Link to='/create' className='hover:text-sky-800'>
             Create New Post
           </Link>
-          <Link to='/logout' className='hover:text-sky-800'>
+          <button
+            onClick={() => logout()}
+            className='rounded-md bg-sky-800 px-2.5 py-2 hover:bg-sky-900'
+          >
             Logout
-          </Link>
+          </button>
         </>
       ) : (
         <>
