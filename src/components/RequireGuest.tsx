@@ -1,9 +1,9 @@
-const RequireGuest = () => {
-  return (
-    <div>
-      <h1>RequireGuest</h1>
-    </div>
-  );
+import { Navigate, Outlet } from 'react-router-dom';
+import { useAuthContext } from '../hooks/useAuthContext';
+
+const RequireAuth = () => {
+  const { user } = useAuthContext().state;
+  return !user ? <Outlet /> : <Navigate to='/' />;
 };
 
-export default RequireGuest;
+export default RequireAuth;
