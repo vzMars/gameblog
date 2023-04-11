@@ -4,7 +4,7 @@ import { UserType } from '../context/AuthContext';
 
 export const useSignup = () => {
   const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const { dispatch } = useAuthContext();
 
   const signup = async (email: string, username: string, password: string) => {
