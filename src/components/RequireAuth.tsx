@@ -1,9 +1,10 @@
+import { Navigate, Outlet } from 'react-router-dom';
+import { useAuthContext } from '../hooks/useAuthContext';
+
 const RequireAuth = () => {
-  return (
-    <div>
-      <h1>RequireAuth</h1>
-    </div>
-  );
+  const { user } = useAuthContext().state;
+
+  return user ? <Outlet /> : <Navigate to='login' />;
 };
 
 export default RequireAuth;
