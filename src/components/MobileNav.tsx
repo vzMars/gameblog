@@ -26,7 +26,7 @@ const MobileNav = ({ user, open, setOpen, logout }: PropsType) => {
           <Link to='/profile' className='rounded-md p-2 hover:bg-sky-800'>
             Profile
           </Link>
-          <Link to='/new' className='rounded-md p-2 hover:bg-sky-800'>
+          <Link to='/create' className='rounded-md p-2 hover:bg-sky-800'>
             Create Post
           </Link>
           <button

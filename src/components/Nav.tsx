@@ -17,7 +17,7 @@ const Nav = ({ user, logout }: PropsType) => {
           <Link to='/profile' className='hover:text-sky-800'>
             Profile
           </Link>
-          <Link to='/new' className='hover:text-sky-800'>
+          <Link to='/create' className='hover:text-sky-800'>
             Create Post
           </Link>
           <button
