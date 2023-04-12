@@ -11,11 +11,14 @@ const Nav = ({ user, logout }: PropsType) => {
     <nav className='hidden h-12 items-center space-x-6 text-lg lg:flex'>
       {user ? (
         <>
+          <Link to='/news' className='hover:text-sky-800'>
+            Latest News
+          </Link>
           <Link to='/profile' className='hover:text-sky-800'>
             Profile
           </Link>
-          <Link to='/create' className='hover:text-sky-800'>
-            Create New Post
+          <Link to='/new' className='hover:text-sky-800'>
+            Create Post
           </Link>
           <button
             onClick={() => logout()}
