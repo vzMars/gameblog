@@ -4,7 +4,7 @@ type PropsType = {
 
 const Error = ({ errorMessage }: PropsType) => {
   return (
-    <div className='rounded border-2 border-rose-600 bg-rose-100 p-2 font-medium text-rose-600'>
+    <div className='rounded border-2 border-error-200 bg-error-300 p-2 font-medium text-error-100'>
       {errorMessage}
     </div>
   );
