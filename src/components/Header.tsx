@@ -12,7 +12,7 @@ const Header = () => {
   const { logout } = useLogout();
 
   return (
-    <header className='fixed top-0 w-full bg-neutral-900 font-lexbold text-white'>
+    <header className='fixed top-0 w-full border-b border-neutral-800 bg-neutral-900 font-lexbold text-white'>
       <section className='mx-auto flex max-w-6xl items-center justify-between p-4'>
         <Link
           to='/'
