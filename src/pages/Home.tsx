@@ -20,7 +20,7 @@ const Home = () => {
               to='/news'
               className='rounded-md bg-sky-800 p-3 text-xl hover:bg-sky-900'
             >
-              News
+              Latest News
             </Link>
           ) : (
             <>

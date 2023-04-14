@@ -21,7 +21,7 @@ const MobileNav = ({ user, open, setOpen, logout }: PropsType) => {
       {user ? (
         <>
           <Link to='/news' className='rounded-md p-2 hover:bg-sky-800'>
-            Latest News
+            News
           </Link>
           <Link to='/profile' className='rounded-md p-2 hover:bg-sky-800'>
             Profile

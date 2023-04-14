@@ -12,7 +12,7 @@ const Nav = ({ user, logout }: PropsType) => {
       {user ? (
         <>
           <Link to='/news' className='hover:text-sky-800'>
-            Latest News
+            News
           </Link>
           <Link to='/profile' className='hover:text-sky-800'>
             Profile
