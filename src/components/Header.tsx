@@ -8,7 +8,7 @@ import { useLogout } from '../hooks/useLogout';
 
 const Header = () => {
   const [open, setOpen] = useState(false);
-  const { user } = useAuthContext().state;
+  const { user } = useAuthContext();
   const { logout } = useLogout();
 
   return (

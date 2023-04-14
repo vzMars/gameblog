@@ -3,7 +3,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import { FaGamepad } from 'react-icons/fa';
 
 const Home = () => {
-  const { user } = useAuthContext().state;
+  const { user } = useAuthContext();
 
   return (
     <main className='m-auto font-lexreg text-white'>
