@@ -12,23 +12,24 @@ export type AuthStateType = {
   isLoading: boolean;
 };
 
-const initAuthState: AuthStateType = {
+const initialState: AuthStateType = {
   user: null,
   isLoading: true,
 };
 
-export type ReducerAction = {
-  type: string;
-  payload?: UserType;
-};
+export type ReducerAction =
+  | { type: 'LOGIN'; payload: UserType }
+  | { type: 'LOGOUT' };
 
 export type AuthContextType = {
-  state: AuthStateType;
+  user: UserType | null;
+  isLoading: boolean;
   dispatch: React.Dispatch<ReducerAction>;
 };
 
 const initAuthContextState: AuthContextType = {
-  state: initAuthState,
+  user: initialState.user,
+  isLoading: initialState.isLoading,
   dispatch: () => {},
 };
 
@@ -61,7 +62,7 @@ export const authReducer = (
 export type ChildrenType = { children?: ReactElement | ReactElement[] };
 
 export const AuthProvider = ({ children }: ChildrenType): ReactElement => {
-  const [state, dispatch] = useReducer(authReducer, initAuthState);
+  const [state, dispatch] = useReducer(authReducer, initialState);
 
   useEffect(() => {
     const getAuthStatus = async () => {
@@ -90,7 +91,7 @@ export const AuthProvider = ({ children }: ChildrenType): ReactElement => {
       {state.isLoading ? (
         <Loader />
       ) : (
-        <AuthContext.Provider value={{ state, dispatch }}>
+        <AuthContext.Provider value={{ ...state, dispatch }}>
           {children}
         </AuthContext.Provider>
       )}
