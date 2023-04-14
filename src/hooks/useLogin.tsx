@@ -29,7 +29,7 @@ export const useLogin = () => {
 
     if (response.ok) {
       const user: UserType = json.user;
-      dispatch({ type: 'LOGIN', payload: { user: user, isLoading: false } });
+      dispatch({ type: 'LOGIN', payload: user });
       setIsLoading(false);
     }
   };

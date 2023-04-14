@@ -19,7 +19,7 @@ const initAuthState: AuthStateType = {
 
 export type ReducerAction = {
   type: string;
-  payload?: AuthStateType;
+  payload?: UserType;
 };
 
 export type AuthContextType = {
@@ -45,8 +45,8 @@ export const authReducer = (
       }
 
       return {
-        user: action.payload.user,
-        isLoading: action.payload.isLoading,
+        user: action.payload,
+        isLoading: false,
       };
     case 'LOGOUT':
       return {
@@ -78,7 +78,7 @@ export const AuthProvider = ({ children }: ChildrenType): ReactElement => {
 
       if (response.ok) {
         const user: UserType = json.user;
-        dispatch({ type: 'LOGIN', payload: { user: user, isLoading: false } });
+        dispatch({ type: 'LOGIN', payload: user });
       }
     };
 
