@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { useAuthContext } from './useAuthContext';
-import { UserType } from '../context/AuthContext';
+import { usePostContext } from './usePostContext';
+import { getPosts } from '../services/getPosts';
 
 export const useSignup = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { dispatch } = useAuthContext();
+  const { dispatch: postDispatch } = usePostContext();
 
   const signup = async (email: string, username: string, password: string) => {
     setIsLoading(true);
@@ -28,8 +30,8 @@ export const useSignup = () => {
     }
 
     if (response.ok) {
-      const user: UserType = json.user;
-      dispatch({ type: 'LOGIN', payload: user });
+      dispatch({ type: 'LOGIN', payload: json.user });
+      getPosts(postDispatch);
       setIsLoading(false);
     }
   };
