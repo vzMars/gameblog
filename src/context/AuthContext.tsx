@@ -1,30 +1,15 @@
 import { createContext, useReducer, useEffect, ReactElement } from 'react';
 import Loader from '../components/Loader';
-
-export type UserType = {
-  id: string;
-  email: string;
-  username: string;
-};
-
-export type AuthStateType = {
-  user: UserType | null;
-  isLoading: boolean;
-};
+import {
+  AuthStateType,
+  AuthContextType,
+  AuthReducerAction,
+  ChildrenType,
+} from '../types';
 
 const initialState: AuthStateType = {
   user: null,
   isLoading: true,
-};
-
-export type ReducerAction =
-  | { type: 'LOGIN'; payload: UserType }
-  | { type: 'LOGOUT' };
-
-export type AuthContextType = {
-  user: UserType | null;
-  isLoading: boolean;
-  dispatch: React.Dispatch<ReducerAction>;
 };
 
 const initAuthContextState: AuthContextType = {
@@ -37,7 +22,7 @@ export const AuthContext = createContext<AuthContextType>(initAuthContextState);
 
 export const authReducer = (
   state: AuthStateType,
-  action: ReducerAction
+  action: AuthReducerAction
 ): AuthStateType => {
   switch (action.type) {
     case 'LOGIN':
@@ -59,8 +44,6 @@ export const authReducer = (
   }
 };
 
-export type ChildrenType = { children?: ReactElement | ReactElement[] };
-
 export const AuthProvider = ({ children }: ChildrenType): ReactElement => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
@@ -78,8 +61,7 @@ export const AuthProvider = ({ children }: ChildrenType): ReactElement => {
       }
 
       if (response.ok) {
-        const user: UserType = json.user;
-        dispatch({ type: 'LOGIN', payload: user });
+        dispatch({ type: 'LOGIN', payload: json.user });
       }
     };
 
