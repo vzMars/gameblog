@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { UserType } from '../context/AuthContext';
+import { UserType } from '../types';
 
 type PropsType = {
   user: UserType | null;
