@@ -1,20 +1,48 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { usePostContext } from '../hooks/usePostContext';
+import Error from '../components/Error';
 
 const CreatePost = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [tag, setTag] = useState('');
   const [file, setFile] = useState<File | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const { dispatch } = usePostContext();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError(null);
     const formData = new FormData();
+
     formData.append('title', title);
     formData.append('content', content);
     formData.append('tag', tag);
+
     if (file) {
       formData.append('file', file);
+    }
+
+    const response = await fetch('http://localhost:5000/api/posts', {
+      method: 'POST',
+      body: formData,
+      credentials: 'include',
+    });
+
+    const json = await response.json();
+
+    if (!response.ok) {
+      setIsLoading(false);
+      setError(json.error);
+    }
+
+    if (response.ok) {
+      dispatch({ type: 'CREATE', payload: json });
+      navigate('/news');
     }
   };
 
@@ -129,9 +157,13 @@ const CreatePost = () => {
             </p>
           </fieldset>
 
-          <button className='mb-6 w-full rounded-md bg-sky-800 px-2.5 py-2 font-lexbold hover:bg-sky-900'>
+          <button
+            disabled={isLoading}
+            className='mb-6 w-full rounded-md bg-sky-800 px-2.5 py-2 font-lexbold hover:bg-sky-900'
+          >
             Create
           </button>
+          {error && <Error errorMessage={error} />}
         </form>
       </section>
     </main>
