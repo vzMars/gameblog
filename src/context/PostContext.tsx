@@ -32,6 +32,14 @@ export const postReducer = (
       return {
         posts: action.payload,
       };
+    case 'CREATE':
+      if (!action.payload) {
+        throw new Error('action.payload missing in CREATE action');
+      }
+
+      return {
+        posts: [action.payload, ...state.posts],
+      };
     default:
       return state;
   }
