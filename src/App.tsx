@@ -10,7 +10,9 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
-import Posts from './pages/Posts';
+import LatestNews from './pages/LatestNews';
+import NewsByTag from './pages/NewsByTag';
+import PostDetails from './pages/PostDetails';
 import CreatePost from './pages/CreatePost';
 import NotFound from './pages/NotFound';
 
@@ -31,8 +33,10 @@ const App = () => {
           </Route>
 
           <Route element={<RequireAuth />}>
-            <Route path='news' element={<Posts />} />
-            <Route path='profile' element={<Profile />} />
+            <Route path='news' element={<LatestNews />} />
+            <Route path='news/:id' element={<PostDetails />} />
+            <Route path='user/:username' element={<Profile />} />
+            <Route path='tag/:tag' element={<NewsByTag />} />
             <Route path='create' element={<CreatePost />} />
           </Route>
 
