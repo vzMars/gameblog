@@ -14,7 +14,7 @@ const Nav = ({ user, logout }: PropsType) => {
           <Link to='/news' className='hover:text-sky-800'>
             News
           </Link>
-          <Link to='/profile' className='hover:text-sky-800'>
+          <Link to={`/user/${user.username}`} className='hover:text-sky-800'>
             Profile
           </Link>
           <Link to='/create' className='hover:text-sky-800'>
