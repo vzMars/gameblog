@@ -1,7 +1,7 @@
 import { usePostContext } from '../hooks/usePostContext';
 import PostCard from '../components/PostCard';
 
-const Posts = () => {
+const LatestNews = () => {
   const { posts } = usePostContext();
   return (
     <main className='font-lexreg text-white'>
@@ -17,4 +17,4 @@ const Posts = () => {
   );
 };
 
-export default Posts;
+export default LatestNews;
