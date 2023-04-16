@@ -8,7 +8,7 @@ const CreatePost = () => {
   const [content, setContent] = useState('');
   const [tag, setTag] = useState('');
   const [file, setFile] = useState<File | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { dispatch } = usePostContext();
   const navigate = useNavigate();

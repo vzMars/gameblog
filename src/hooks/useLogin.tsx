@@ -5,7 +5,7 @@ import { getPosts } from '../services/getPosts';
 
 export const useLogin = () => {
   const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { dispatch } = useAuthContext();
   const { dispatch: postDispatch } = usePostContext();
 
