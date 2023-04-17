@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { usePostContext } from '../hooks/usePostContext';
 import PostCard from '../components/PostCard';
@@ -10,6 +10,7 @@ const Profile = () => {
   const { username } = useParams();
   const { posts } = usePostContext();
   const navigate = useNavigate();
+  let location = useLocation();
 
   useEffect(() => {
     const getProfile = async () => {
@@ -37,7 +38,7 @@ const Profile = () => {
     };
 
     getProfile();
-  }, []);
+  }, [location]);
 
   const profilePosts = posts.filter(
     (post) => post.user.username === profileName
