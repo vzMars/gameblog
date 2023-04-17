@@ -60,8 +60,6 @@ const NewsByTag = () => {
             </ul>
           </>
         )}
-
-        <ul></ul>
       </section>
     </main>
   );
