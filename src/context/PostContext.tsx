@@ -45,6 +45,15 @@ export const postReducer = (
         posts: [action.payload, ...state.posts],
         isLoading: false,
       };
+    case 'DELETE':
+      if (!action.payload) {
+        throw new Error('action.payload missing in DELETE action');
+      }
+
+      return {
+        posts: state.posts.filter((post) => post._id !== action.payload._id),
+        isLoading: false,
+      };
     default:
       return state;
   }
