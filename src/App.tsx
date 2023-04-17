@@ -14,6 +14,7 @@ import LatestNews from './pages/LatestNews';
 import NewsByTag from './pages/NewsByTag';
 import PostDetails from './pages/PostDetails';
 import CreatePost from './pages/CreatePost';
+import EditPost from './pages/EditPost';
 import NotFound from './pages/NotFound';
 
 // layouts
@@ -33,11 +34,12 @@ const App = () => {
           </Route>
 
           <Route element={<RequireAuth />}>
+            <Route path='create' element={<CreatePost />} />
             <Route path='news' element={<LatestNews />} />
             <Route path='news/:id' element={<PostDetails />} />
             <Route path='user/:username' element={<Profile />} />
             <Route path='tag/:tag' element={<NewsByTag />} />
-            <Route path='create' element={<CreatePost />} />
+            <Route path='edit/:id' element={<EditPost />} />
           </Route>
 
           <Route path='404' element={<NotFound />} />
