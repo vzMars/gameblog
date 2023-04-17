@@ -45,6 +45,17 @@ export const postReducer = (
         posts: [action.payload, ...state.posts],
         isLoading: false,
       };
+    case 'UPDATE':
+      if (!action.payload) {
+        throw new Error('action.payload missing in UPDATE action');
+      }
+
+      return {
+        posts: state.posts.map((post) =>
+          post._id === action.payload._id ? action.payload : post
+        ),
+        isLoading: false,
+      };
     case 'DELETE':
       if (!action.payload) {
         throw new Error('action.payload missing in DELETE action');
