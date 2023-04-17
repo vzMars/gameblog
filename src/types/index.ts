@@ -43,10 +43,12 @@ export type PostType = {
 
 export type PostStateType = {
   posts: PostType[];
+  isLoading: boolean;
 };
 
 export type PostContextType = {
   posts: PostType[];
+  isLoading: boolean;
   dispatch: React.Dispatch<PostReducerAction>;
 };
 

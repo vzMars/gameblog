@@ -1,4 +1,5 @@
 import { createContext, useReducer, useEffect, ReactElement } from 'react';
+import Loader from '../components/Loader';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { getPosts } from '../services/getPosts';
 import {
@@ -10,10 +11,12 @@ import {
 
 const initialState: PostStateType = {
   posts: [],
+  isLoading: true,
 };
 
 const initPostContextState: PostContextType = {
   posts: initialState.posts,
+  isLoading: initialState.isLoading,
   dispatch: () => {},
 };
 
@@ -31,6 +34,7 @@ export const postReducer = (
 
       return {
         posts: action.payload,
+        isLoading: false,
       };
     case 'CREATE':
       if (!action.payload) {
@@ -39,6 +43,7 @@ export const postReducer = (
 
       return {
         posts: [action.payload, ...state.posts],
+        isLoading: false,
       };
     default:
       return state;
@@ -56,8 +61,14 @@ export const PostProvider = ({ children }: ChildrenType): ReactElement => {
   }, []);
 
   return (
-    <PostContext.Provider value={{ ...state, dispatch }}>
-      {children}
-    </PostContext.Provider>
+    <>
+      {state.isLoading ? (
+        <Loader />
+      ) : (
+        <PostContext.Provider value={{ ...state, dispatch }}>
+          {children}
+        </PostContext.Provider>
+      )}
+    </>
   );
 };
