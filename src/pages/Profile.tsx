@@ -17,7 +17,7 @@ const Profile = () => {
       setIsLoading(true);
 
       const response = await fetch(
-        `http://localhost:5000/api/user/${username}`,
+        `https://api.gameblog.vzmars.com/api/user/${username}`,
         {
           method: 'GET',
           credentials: 'include',

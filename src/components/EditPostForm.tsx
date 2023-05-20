@@ -33,7 +33,7 @@ const PostForm = ({ post }: PropsType) => {
     }
 
     const response = await fetch(
-      `http://localhost:5000/api/posts/${post._id}`,
+      `https://api.gameblog.vzmars.com/api/posts/${post._id}`,
       {
         method: 'PUT',
         body: formData,

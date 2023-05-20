@@ -16,7 +16,7 @@ const NewsByTag = () => {
       setIsLoading(true);
 
       const response = await fetch(
-        `http://localhost:5000/api/posts/tag/${tag}`,
+        `https://api.gameblog.vzmars.com/api/posts/tag/${tag}`,
         {
           method: 'GET',
           credentials: 'include',

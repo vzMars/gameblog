@@ -14,13 +14,16 @@ const EditPost = () => {
     const checkPostId = async () => {
       setIsLoading(true);
 
-      const response = await fetch(`http://localhost:5000/api/posts/${id}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-      });
+      const response = await fetch(
+        `https://api.gameblog.vzmars.com/api/posts/${id}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+        }
+      );
 
       const json = await response.json();
 

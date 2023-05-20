@@ -77,6 +77,8 @@ export const PostProvider = ({ children }: ChildrenType): ReactElement => {
   useEffect(() => {
     if (user) {
       getPosts(dispatch);
+    } else {
+      dispatch({ type: 'SET', payload: [] });
     }
   }, []);
 
