@@ -1,9 +1,18 @@
 import { Link } from 'react-router-dom';
+import { useLogin } from '../hooks/useLogin';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { FaGamepad } from 'react-icons/fa';
+import React from 'react';
 
 const Home = () => {
   const { user } = useAuthContext();
+  const { login, isLoading } = useLogin();
+
+  const handleGuestLogin = async (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+
+    await login("mike@gmail.com", "Mike123!");
+  };
 
   return (
     <main className='m-auto font-lexreg text-white'>
@@ -24,18 +33,13 @@ const Home = () => {
             </Link>
           ) : (
             <>
-              <Link
-                to='/login'
+              <button
+                disabled={isLoading}
                 className='rounded-md bg-sky-800 p-3 text-xl hover:bg-sky-900'
+                onClick={handleGuestLogin}
               >
-                Login
-              </Link>
-              <Link
-                to='/signup'
-                className='rounded-md bg-sky-800 p-3 text-xl hover:bg-sky-900'
-              >
-                Sign Up
-              </Link>
+                Guest Login
+              </button>
             </>
           )}
         </div>
